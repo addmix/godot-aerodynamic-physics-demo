@@ -30,8 +30,6 @@ onready var right : AeroSurface = $RightFront
 onready var top : AeroSurface = $DorsalFront
 onready var bottom : AeroSurface = $VentralFront
 
-var control_iterations : int = 4
-
 func _physics_process(delta : float) -> void:
 	control_auth = Vector3.ZERO
 	relative_target_velocity = target.linear_velocity - linear_velocity
@@ -41,12 +39,11 @@ func _physics_process(delta : float) -> void:
 	#thrust
 	apply_impulse(-global_transform.basis.xform(ThrustPosition.transform.origin), -global_transform.basis.z * 400 * delta)
 	
+	
 	#control
 #	control_auth = Vector3(Input.get_axis("yaw_left", "yaw_right"), Input.get_axis("pitch_down", "pitch_up"), Input.get_axis("roll_left", "roll_right"))
-	
-#	get_pn_control(linear_velocity, angular_velocity)
 	control_auth += get_pn_control(linear_velocity, angular_velocity)
-#	print(control_auth)
+
 	
 #	left.flap_angle = -control_auth.y - control_auth.z * deg2rad(50.0)
 #	right.flap_angle = -control_auth.y + control_auth.z * deg2rad(50.0)
@@ -65,8 +62,8 @@ func get_pn_control(vel : Vector3, ang_vel : Vector3) -> Vector3:
 	var local_angular_velocity : Vector3 = global_transform.basis.xform_inv(ang_vel)
 	var local_velocity : Vector3 = global_transform.basis.xform_inv(linear_velocity)
 	
-	var tpn := apn()
-#	print(tpn)
+	var tpn := tpn()
+	print(tpn)
 	var desired_velocity_change := Vector3(-tpn.x, -tpn.y, -local_angular_velocity.z)
 	var desired_velocity : Vector3 = local_velocity + desired_velocity_change
 	#angle to desired velocity
@@ -85,8 +82,8 @@ func get_pn_control(vel : Vector3, ang_vel : Vector3) -> Vector3:
 		#reverse lift algorithm?
 	#train an algorithm? >good way to gain experience
 	
-	var control := Vector3(desired_velocity_change.x, desired_velocity_change.y, 0.0) * 0.005
-	print(control)
+	var control := Vector3(desired_velocity_change.x, desired_velocity_change.y, 0.0) * 0.001
+#	print(control)
 	return control
 
 
@@ -94,23 +91,22 @@ onready var relative_target_velocity : Vector3 = target.linear_velocity - linear
 onready var last_relative_target_velocity : Vector3 = target.linear_velocity - linear_velocity
 #no issues
 func tpn() -> Vector2:
-	var local_velocity : Vector3 = global_transform.basis.xform_inv(relative_target_velocity)
-	var closing_velocity : float = local_velocity.length()
+	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
 	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
+	
 	return Physics3DUtils.tpn(3.0, closing_velocity, los_rate)
 
 func apn() -> Vector2:
-	var local_velocity : Vector3 = global_transform.basis.xform_inv(relative_target_velocity)
-	var closing_velocity : float = local_velocity.length()
+	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
 	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
-	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
 	
+	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
 	var target_relative_position : Vector3 = target.global_transform.origin - global_transform.origin
 	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position).normalized()
 	
 	var target_normal_acceleration : float = missile_los.normalized().dot(target_acceleration)
 	print(target_normal_acceleration)
-	return Physics3DUtils.apn(3.5, closing_velocity, los_rate, -target_normal_acceleration)
+	return Physics3DUtils.apn(3.5, closing_velocity, los_rate, target_normal_acceleration)
 
 
 onready var last_los : Vector2 = get_los()
