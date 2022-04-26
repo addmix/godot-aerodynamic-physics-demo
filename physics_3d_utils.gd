@@ -24,9 +24,15 @@ static func prop_nav_conserve_energy_vector(position : Vector3, velocity : Vecto
 	
 	return (-proportionality_constant * relative_target_velocity.length() * velocity.normalized()).cross(o)
 
-static func tpn(closing_velocity : float, los_rate : Vector2) -> Vector2:
-	var nsc : float = 3.0 * closing_velocity
+static func tpn(proportionality_constant : float, closing_velocity : float, los_rate : Vector2) -> Vector2:
+	var nsc : float = proportionality_constant * closing_velocity
 	return Vector2(nsc * los_rate.x, nsc * los_rate.y)
+
+static func apn(proportionality_constant : float, closing_velocity : float, los_rate : Vector2, normal_acceleration : float) -> Vector2:
+	var nsc : float = proportionality_constant * closing_velocity
+	var d : float = (proportionality_constant / 2.0) * normal_acceleration
+	return Vector2(nsc * los_rate.x + d, nsc * los_rate.y + d)
+
 
 static func augmented_prop_nav(closing_velocity : float, los_rate : Vector2, los_normal_acceleration : float) -> Vector2:
 	var nsc : float = 3.0 * closing_velocity
