@@ -114,7 +114,9 @@ onready var los : Vector2 = get_los()
 #no issues
 func get_los() -> Vector2:
 	var target_relative_position : Vector3 = target.global_transform.origin - global_transform.origin
-	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position)
+	
+	var missile_los : Vector3 =target_relative_position# global_transform.basis.xform_inv(target_relative_position)
+	
 	var missile_los_degrees := Vector2(atan2(missile_los.x, -missile_los.z), atan2(missile_los.y, -missile_los.z))
 	return missile_los_degrees
 
