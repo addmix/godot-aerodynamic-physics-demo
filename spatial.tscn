@@ -27,7 +27,7 @@ transform = Transform( 1, 0, 0, 0, 0.360078, 0.932922, 0, -0.932922, 0.360078, 0
 [node name="Target" parent="." instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -123.676, -555.972 )
 linear_velocity = Vector3( -60, 0, 0 )
-thrust_force = 1000.0
+thrust_force = 2000.0
 
 [node name="Missile" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 201.151, 851.362 )

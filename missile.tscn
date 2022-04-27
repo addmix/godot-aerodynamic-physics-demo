@@ -91,7 +91,7 @@ lift_slope = 2.22
 span = 0.3
 
 [node name="LeftFront" type="Spatial" parent="." groups=["pitch", "roll"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -1.16615 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.96615 )
 script = ExtResource( 2 )
 aspect_ratio = 1.0
 chord = 0.4
@@ -100,7 +100,7 @@ lift_slope = 2.22
 span = 0.3
 
 [node name="RightFront" type="Spatial" parent="." groups=["pitch", "roll"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -1.16615 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.96615 )
 script = ExtResource( 2 )
 aspect_ratio = 1.0
 chord = 0.4
@@ -109,7 +109,7 @@ lift_slope = 2.22
 span = 0.3
 
 [node name="DorsalFront" type="Spatial" parent="." groups=["roll", "yaw"]]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.2, -1.16615 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.2, -0.96615 )
 script = ExtResource( 2 )
 aspect_ratio = 1.0
 chord = 0.4
@@ -118,7 +118,7 @@ lift_slope = 2.22
 span = 0.3
 
 [node name="VentralFront" type="Spatial" parent="." groups=["roll", "yaw"]]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, -1.16615 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, -0.96615 )
 script = ExtResource( 2 )
 aspect_ratio = 1.0
 chord = 0.4

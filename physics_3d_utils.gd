@@ -29,9 +29,10 @@ static func tpn(proportionality_constant : float, closing_velocity : float, los_
 	return Vector2(nsc * los_rate.x, nsc * los_rate.y)
 
 static func apn(proportionality_constant : float, closing_velocity : float, los_rate : Vector2, normal_acceleration : float) -> Vector2:
-	var nsc : float = proportionality_constant * closing_velocity
-	var d : float = (proportionality_constant / 2.0) * normal_acceleration
-	return Vector2(nsc * los_rate.x + d, nsc * los_rate.y + d)
+	var tpn := tpn(proportionality_constant, closing_velocity, los_rate)
+	var d : float = (proportionality_constant * normal_acceleration) / 2.0
+	
+	return Vector2(tpn.x + d, tpn.y + d)
 
 
 static func augmented_prop_nav(closing_velocity : float, los_rate : Vector2, los_normal_acceleration : float) -> Vector2:
