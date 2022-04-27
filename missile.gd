@@ -57,53 +57,15 @@ func get_pn_control(vel : Vector3, ang_vel : Vector3) -> Vector3:
 	var local_angular_velocity : Vector3 = global_transform.basis.xform_inv(ang_vel)
 	var local_velocity : Vector3 = global_transform.basis.xform_inv(linear_velocity)
 	
-	var tpn := apn()
+	var tpn := tpn()
 	var desired_velocity_change := Vector3(-tpn.x, -tpn.y, -local_angular_velocity.z)
 	var desired_velocity : Vector3 = local_velocity + desired_velocity_change
 	#angle to desired velocity
 	var desired_angle := Vector2(atan2(desired_velocity.x, -desired_velocity.z), atan2(desired_velocity.y, -desired_velocity.z))
 	
-	#figure out what control is necessary for velocity change here
-	#brute force? >good for now?
-		#on each axis, x,y, start with 3 segments, test outcome of each
-		#[-1]---[0]---[1]
-		#if control magnitude >1 is necessary on either axis, we can discard solving that axis
-		#recursion
-			#subdivide section to resemble original, repeat for X substeps, further narrowing down necessary control
-	#precompiled data? >similar to training an algorithm, but possibly slower, more difficult
-	#formula? >most performant >probably hard to make solver >tricky to inplement myself
-		#calculate necessary torque force,
-		#reverse lift algorithm?
-	#train an algorithm? >good way to gain experience
-	
 	var control := Vector3(desired_velocity_change.x, desired_velocity_change.y, 0.0) * 0.005
 #	print(control)
 	return control
-
-
-onready var relative_target_velocity : Vector3 = target.linear_velocity - linear_velocity
-onready var last_relative_target_velocity : Vector3 = target.linear_velocity - linear_velocity
-#no issues
-func tpn() -> Vector2:
-	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
-	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
-	
-	return Physics3DUtils.tpn(3.0, closing_velocity, los_rate)
-
-#has issues when pointing towards X+
-func apn() -> Vector2:
-	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
-	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
-	
-	#getting line of sight
-	var target_relative_position : Vector3 = target.global_transform.origin - global_transform.origin
-	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position).normalized()
-	#acceleration viewed by missile
-	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
-	#acceleration amount normal to los
-	var target_normal_acceleration : float = missile_los.normalized().dot(target_acceleration)
-	return Physics3DUtils.apn(3.0, closing_velocity, los_rate, target_normal_acceleration, los - last_los)
-
 
 onready var last_target_position : Vector3 = target.global_transform.origin
 onready var last_position : Vector3 = global_transform.origin
@@ -121,6 +83,30 @@ func get_last_los() -> Vector2:
 	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position)
 	var missile_los_degrees := Vector2(atan2(missile_los.x, -missile_los.z), atan2(missile_los.y, -missile_los.z))
 	return missile_los_degrees
+
+onready var relative_target_velocity : Vector3 = target.linear_velocity - linear_velocity
+onready var last_relative_target_velocity : Vector3 = target.linear_velocity - linear_velocity
+func tpn() -> Vector2:
+	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
+	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
+	
+	return Physics3DUtils.tpn(3.0, closing_velocity, los_rate)
+
+func apn() -> Vector2:
+	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
+	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
+	
+	#getting line of sight
+	var target_relative_position : Vector3 = target.global_transform.origin - global_transform.origin
+	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position).normalized()
+	#acceleration viewed by missile
+	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
+	#acceleration amount normal to los
+	var target_normal_acceleration : float = missile_los.normalized().dot(target_acceleration)
+	return Physics3DUtils.apn(3.0, closing_velocity, los_rate, target_normal_acceleration, los - last_los)
+
+
+
 
 
 static func move_to(delta : float, position : float, target : float, speed : float = 1.0) -> float:
