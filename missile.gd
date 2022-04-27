@@ -57,8 +57,7 @@ func get_pn_control(vel : Vector3, ang_vel : Vector3) -> Vector3:
 	var local_angular_velocity : Vector3 = global_transform.basis.xform_inv(ang_vel)
 	var local_velocity : Vector3 = global_transform.basis.xform_inv(linear_velocity)
 	
-	var tpn := tpn()
-#	print(tpn)
+	var tpn := apn()
 	var desired_velocity_change := Vector3(-tpn.x, -tpn.y, -local_angular_velocity.z)
 	var desired_velocity : Vector3 = local_velocity + desired_velocity_change
 	#angle to desired velocity
@@ -96,14 +95,14 @@ func apn() -> Vector2:
 	var closing_velocity : float = global_transform.basis.xform_inv(relative_target_velocity).length()
 	var los_rate : Vector2 = (last_los - los) / get_physics_process_delta_time()
 	
-	#issue is probably in here
-	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
+	#getting line of sight
 	var target_relative_position : Vector3 = target.global_transform.origin - global_transform.origin
 	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position).normalized()
+	#acceleration viewed by missile
+	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
+	#acceleration amount normal to los
 	var target_normal_acceleration : float = missile_los.normalized().dot(target_acceleration)
-	
-	
-	return Physics3DUtils.apn(3.0, closing_velocity, los_rate, target_normal_acceleration)
+	return Physics3DUtils.apn(3.0, closing_velocity, los_rate, target_normal_acceleration, los - last_los)
 
 
 onready var last_target_position : Vector3 = target.global_transform.origin
@@ -113,13 +112,13 @@ onready var los : Vector2 = get_los()
 #no issues
 func get_los() -> Vector2:
 	var target_relative_position : Vector3 = target.global_transform.origin - global_transform.origin
-	var missile_los : Vector3 = target_relative_position# global_transform.basis.xform_inv(target_relative_position)
+	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position)
 	var missile_los_degrees := Vector2(atan2(missile_los.x, -missile_los.z), atan2(missile_los.y, -missile_los.z))
 	return missile_los_degrees
 
 func get_last_los() -> Vector2:
 	var target_relative_position : Vector3 = last_target_position - last_position
-	var missile_los : Vector3 = target_relative_position# global_transform.basis.xform_inv(target_relative_position)
+	var missile_los : Vector3 = global_transform.basis.xform_inv(target_relative_position)
 	var missile_los_degrees := Vector2(atan2(missile_los.x, -missile_los.z), atan2(missile_los.y, -missile_los.z))
 	return missile_los_degrees
 
