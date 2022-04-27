@@ -42,7 +42,6 @@ material = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.374, 4.007 )
-current = true
 far = 5000.0
 
 [node name="ThrustPosition" type="Position3D" parent="."]
