@@ -42,9 +42,12 @@ onready var FrontWheel : VehicleWheel = $FrontWheel
 
 var body_state : PhysicsDirectBodyState
 
+var last_velocity : Vector3 = Vector3.ZERO
+
 func _integrate_forces(state : PhysicsDirectBodyState) -> void:
-	._integrate_forces(state)
 	body_state = state
+	._integrate_forces(state)
+	ui.set_physics_process(true)
 
 func _physics_process(delta : float) -> void:
 	var increase_throttle : bool = Input.is_action_pressed("throttle_increase")
@@ -73,6 +76,11 @@ func _physics_process(delta : float) -> void:
 	FrontWheel.brake = brakes * braking_force
 	
 	steering = move_to(delta, steering, -yaw * deg2rad(steering_authority), steering_speed)
+	
+	call_deferred("set_last_velocity", linear_velocity)
+
+func set_last_velocity(velocity : Vector3) -> void:
+	last_velocity = linear_velocity
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("toggle_engine", false):
@@ -88,3 +96,23 @@ static func move_to(delta : float, position : float, target : float, speed : flo
 
 static func float_toggle(condition : bool, _true : float, _false : float) -> float:
 	return float(condition) * _true + float(!condition) * _false
+
+func get_altitude() -> float:
+	return global_transform.origin.y * 3.28084
+
+func get_speed() -> float:
+	return linear_velocity.length()
+
+func get_local_velocity() -> Vector3:
+	return global_transform.basis.xform_inv(linear_velocity)
+
+func get_angle_of_attack() -> float:
+	var angle_of_attack : float = 0.0
+	var air_velocity : Vector3 = get_local_velocity()
+	return -atan2(air_velocity.y, -air_velocity.z)
+
+func get_g() -> float:
+	var delta_velocity : Vector3 = linear_velocity - last_velocity
+	var delta_velocity_per_second : Vector3 = (delta_velocity / get_physics_process_delta_time() - body_state.total_gravity) * 0.10197162129779283
+	delta_velocity_per_second = global_transform.basis.xform_inv(delta_velocity_per_second)
+	return delta_velocity_per_second.length() * sign(delta_velocity_per_second.y)

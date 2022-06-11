@@ -10,34 +10,20 @@ onready var mach_ui : Label = $V/Mach
 onready var alpha_ui : Label = $V/Alpha
 onready var g_ui : Label = $V/G
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+func _ready() -> void:
+	set_physics_process(false)
 
-var last_velocity : Vector3 = Vector3.ZERO
-func _process(delta : float) -> void:
-	var speed : float = get_parent().linear_velocity.length()
+func _physics_process(delta : float) -> void:
+	_update_ui()
+
+func _update_ui() -> void:
+	var speed : float = get_parent().get_speed()
+	
 	ias_ui.text = "IAS %s knots" % str(stepify(speed * 1.943844, 0.1))
-	altimeter_ui.text = "%s ft" % str(int(round(get_parent().global_transform.origin.y * 3.28084)))
+	altimeter_ui.text = "%s ft" % str(int(round(get_parent().get_altitude() * 3.28084)))
 	mach_ui.text = "M: %s" % str(stepify(speed * 0.002938670, 0.01))
-	
-	var air_velocity : Vector3 = get_parent().global_transform.basis.xform_inv(get_parent().linear_velocity)
-	var angle_of_attack : float = 0.0
-	if speed > 2.0:
-		 angle_of_attack = atan2(air_velocity.y, -air_velocity.z)
-	
-	
-	
-	alpha_ui.text = "a: %s" % str(round(rad2deg(-angle_of_attack)))
-	
-	if last_velocity != get_parent().linear_velocity:
-		var delta_velocity : Vector3 = get_parent().linear_velocity - last_velocity
-		var delta_velocity_per_second : Vector3 = (delta_velocity / delta - get_parent().body_state.total_gravity) * 0.10197162129779283
-		delta_velocity_per_second = get_parent().global_transform.basis.xform_inv(delta_velocity_per_second)
-		
-		g_ui.text = "G: %s" % str(stepify(delta_velocity_per_second.length() * sign(delta_velocity_per_second.y), 0.1))
-	
-	last_velocity = get_parent().linear_velocity
+	alpha_ui.text = "a: %s" % str(round(rad2deg(get_parent().get_angle_of_attack())))
+	g_ui.text = "G: %s" % str(stepify(get_parent().get_g(), 0.1))
 
 func set_throttle(value : float) -> void:
 	throttle = value
