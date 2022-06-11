@@ -1,0 +1,6 @@
+[submodule "addons/addons/godot_aerodynamic_physics"]
+	path = addons/addons/godot_aerodynamic_physics
+	url = https://github.com/addmix/godot_aerodynamic_physics
+[submodule "addons/addons/godot_utils"]
+	path = addons/addons/godot_utils
+	url = https://github.com/addmix/godot_utils
