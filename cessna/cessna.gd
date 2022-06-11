@@ -52,7 +52,7 @@ func _integrate_forces(state : PhysicsDirectBodyState) -> void:
 func _physics_process(delta : float) -> void:
 	var increase_throttle : bool = Input.is_action_pressed("throttle_increase")
 	if increase_throttle or Input.is_action_pressed("throttle_decrease"):
-		throttle = clamp(move_to(delta, throttle, float(increase_throttle), throttle_speed), 0.0, 1.0)
+		throttle = clamp(MathUtils.move_to(delta, throttle, float(increase_throttle), throttle_speed), 0.0, 1.0)
 		ui.throttle = throttle
 	
 	apply_impulse(transform.basis.xform(thrust_position.transform.origin), -thrust_position.global_transform.basis.z * thrust_force * throttle * float(engine_enabled) * delta)
@@ -62,20 +62,20 @@ func _physics_process(delta : float) -> void:
 	var yaw : float = Input.get_axis("yaw_left", "yaw_right")
 	var roll : float = Input.get_axis("roll_left", "roll_right")
 	
-	thrust_position.rotation.x = move_to(delta, thrust_position.rotation.x, pitch * float(pitch_vectoring) * deg2rad(vector_authority.x), vector_speed.x)
-	thrust_position.rotation.y = move_to(delta, thrust_position.rotation.y, -yaw * float(yaw_vectoring) * deg2rad(vector_authority.y), vector_speed.y)
+	thrust_position.rotation.x = MathUtils.move_to(delta, thrust_position.rotation.x, pitch * float(pitch_vectoring) * deg2rad(vector_authority.x), vector_speed.x)
+	thrust_position.rotation.y = MathUtils.move_to(delta, thrust_position.rotation.y, -yaw * float(yaw_vectoring) * deg2rad(vector_authority.y), vector_speed.y)
 	
-	ElevonL.flap_angle = move_to(delta, ElevonL.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
-	ElevonR.flap_angle = move_to(delta, ElevonR.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
-	Rudder.flap_angle = move_to(delta, Rudder.flap_angle, yaw * float(yaw_control) * deg2rad(control_authority.y), control_speed.y)
-	AileronL.flap_angle = move_to(delta, AileronL.flap_angle, -roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
-	AileronR.flap_angle = move_to(delta, AileronR.flap_angle, roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
+	ElevonL.flap_angle = MathUtils.move_to(delta, ElevonL.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
+	ElevonR.flap_angle = MathUtils.move_to(delta, ElevonR.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
+	Rudder.flap_angle = MathUtils.move_to(delta, Rudder.flap_angle, yaw * float(yaw_control) * deg2rad(control_authority.y), control_speed.y)
+	AileronL.flap_angle = MathUtils.move_to(delta, AileronL.flap_angle, -roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
+	AileronR.flap_angle = MathUtils.move_to(delta, AileronR.flap_angle, roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
 	
 	var braking : bool = Input.is_action_pressed("brakes")
-	brakes = move_to(delta, brakes, float(braking), braking_speed)
+	brakes = MathUtils.move_to(delta, brakes, float(braking), braking_speed)
 	FrontWheel.brake = brakes * braking_force
 	
-	steering = move_to(delta, steering, -yaw * deg2rad(steering_authority), steering_speed)
+	steering = MathUtils.move_to(delta, steering, -yaw * deg2rad(steering_authority), steering_speed)
 	
 	call_deferred("set_last_velocity", linear_velocity)
 
@@ -86,16 +86,6 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("toggle_engine", false):
 		engine_enabled = !engine_enabled
 		ui.engine_enabled = engine_enabled
-
-static func move_to(delta : float, position : float, target : float, speed : float = 1.0) -> float:
-	var direction : float = sign(target - position)
-	var new_position = position + direction * speed * delta
-	var new_direction : float = sign(target - new_position)
-	
-	return float_toggle(direction == new_direction, new_position, target)
-
-static func float_toggle(condition : bool, _true : float, _false : float) -> float:
-	return float(condition) * _true + float(!condition) * _false
 
 func get_altitude() -> float:
 	return global_transform.origin.y * 3.28084
