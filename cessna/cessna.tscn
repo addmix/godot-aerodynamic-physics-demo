@@ -821,7 +821,6 @@ lift_slope = 2.0
 skin_friction = 0.0001
 span = 2.75
 stall_angle_high = 23.0
-stall_angle_low = -15.0
 zero_lift_aoa = -3.0
 
 [node name="AileronR" type="Spatial" parent="."]
@@ -833,7 +832,6 @@ lift_slope = 2.0
 skin_friction = 0.0001
 span = 2.75
 stall_angle_high = 23.0
-stall_angle_low = -15.0
 zero_lift_aoa = -3.0
 
 [node name="MainL" type="Spatial" parent="."]
@@ -845,7 +843,6 @@ lift_slope = 2.0
 skin_friction = 0.0001
 span = 2.117
 stall_angle_high = 23.0
-stall_angle_low = -15.0
 zero_lift_aoa = -3.0
 
 [node name="MainR" type="Spatial" parent="."]
@@ -857,7 +854,6 @@ lift_slope = 2.0
 skin_friction = 0.0001
 span = 2.117
 stall_angle_high = 23.0
-stall_angle_low = -15.0
 zero_lift_aoa = -3.0
 
 [node name="ElevonL" type="Spatial" parent="."]
@@ -867,8 +863,6 @@ flap_fraction = 0.4
 lift_slope = 9.015
 skin_friction = 0.001
 span = 1.63
-stall_angle_high = 15.0
-stall_angle_low = -15.0
 zero_lift_aoa = -5.855
 
 [node name="ElevonR" type="Spatial" parent="."]
@@ -878,8 +872,6 @@ flap_fraction = 0.4
 lift_slope = 9.015
 skin_friction = 0.001
 span = 1.63
-stall_angle_high = 15.0
-stall_angle_low = -15.0
 zero_lift_aoa = -5.855
 
 [node name="Rudder" type="Spatial" parent="."]
@@ -888,8 +880,6 @@ script = ExtResource( 61 )
 flap_fraction = 0.4
 skin_friction = 0.001
 span = 1.63
-stall_angle_high = 15.0
-stall_angle_low = -15.0
 
 [node name="Tail" type="Spatial" parent="."]
 transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.156985, 2.69417 )
@@ -1037,7 +1027,7 @@ width = 0.2
 height = 0.2
 
 [node name="FrontWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.967859, -1.50459 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.967859, -1.50459 )
 use_as_steering = true
 wheel_radius = 0.187
 wheel_rest_length = 0.202

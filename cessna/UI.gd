@@ -32,9 +32,9 @@ func _process(delta : float) -> void:
 	
 	if last_velocity != get_parent().linear_velocity:
 		var delta_velocity_in_local_space : Vector3 = get_parent().global_transform.basis.xform_inv(get_parent().linear_velocity - last_velocity)
-		var delta_velocity_per_second : Vector3 = (delta_velocity_in_local_space / delta + get_parent().body_state.total_gravity) * 0.10197162129779283
+		var delta_velocity_per_second : Vector3 = (delta_velocity_in_local_space / delta - get_parent().body_state.total_gravity) * 0.10197162129779283
 		
-		g_ui.text = "G: %s" % str(stepify(delta_velocity_per_second.length() * sign(delta_velocity_in_local_space.y), 0.1))
+		g_ui.text = "G: %s" % str(stepify(delta_velocity_per_second.length() * sign(delta_velocity_per_second.y), 0.1))
 	
 	last_velocity = get_parent().linear_velocity
 
