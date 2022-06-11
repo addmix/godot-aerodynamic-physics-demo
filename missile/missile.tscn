@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://missile.gd" type="Script" id=1]
+[ext_resource path="res://missile/missile.gd" type="Script" id=1]
 [ext_resource path="res://addons/godot_aerodynamic_physics/core/aero_surface.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=3]

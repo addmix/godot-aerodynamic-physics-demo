@@ -19,7 +19,7 @@ func _physics_process(delta : float) -> void:
 func _update_ui() -> void:
 	var speed : float = get_parent().get_speed()
 	
-	ias_ui.text = "IAS %s knots" % str(stepify(speed * 1.943844, 0.1))
+	ias_ui.text = "IAS %s kts" % str(stepify(speed * 1.943844, 0.1))
 	altimeter_ui.text = "%s ft" % str(int(round(get_parent().get_altitude() * 3.28084)))
 	mach_ui.text = "M: %s" % str(stepify(speed * 0.002938670, 0.01))
 	alpha_ui.text = "a: %s" % str(round(rad2deg(get_parent().get_angle_of_attack())))

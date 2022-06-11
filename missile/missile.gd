@@ -10,13 +10,6 @@ extends AeroBody
 #capable of carrying 9.36kg annular blast ragmentation warhead to a range of more than 10 miles
 
 
-
-
-#i might just need to use a simplified aerodynamic model, difficult to calculate necessary controls
-
-
-
-
 onready var ThrustPosition : Position3D = $ThrustPosition as Position3D
 onready var target : VehicleBody = get_node("../Target")
 
