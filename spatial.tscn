@@ -10,7 +10,7 @@
 background_mode = 2
 background_sky = SubResource( 6 )
 background_energy = 1.24
-ambient_light_sky_contribution = 0.04
+ambient_light_sky_contribution = 0.0
 tonemap_mode = 2
 tonemap_white = 10.49
 glow_enabled = true
@@ -23,20 +23,28 @@ environment = SubResource( 7 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 1, 0, 0, 0, 0.360078, 0.932922, 0, -0.932922, 0.360078, 0, 0, 0 )
+shadow_enabled = true
 
 [node name="Target" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -123.676, -555.972 )
-linear_velocity = Vector3( -60, 0, 0 )
-thrust_force = 2000.0
+transform = Transform( 0.412687, 0, 0.910873, 0, 1, 0, -0.910873, 0, 0.412687, 336.755, 2.30155, -3.52087 )
+mass = 204.082
+thrust_force = 1700.0
+pitch_vectoring = false
+yaw_vectoring = false
+roll_vectoring = false
+vector_authority = Vector3( 45, -45, 45 )
+control_speed = Vector3( 0.5, 1, 1 )
+control_authority = Vector3( 50, 50, 50 )
 
 [node name="Missile" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 201.151, 851.362 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 449.99, 2617.87 )
 linear_velocity = Vector3( 0, 0, -100 )
 max_force = 1000.0
 max_torque = 5000.0
+control_speed = 7.0
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -220.621, 0 )
-width = 10000.0
-depth = 10000.0
+use_collision = true
+width = 1000.0
+depth = 1000.0
 material = ExtResource( 3 )

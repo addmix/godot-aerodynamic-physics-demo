@@ -1,6 +1,26 @@
 extends AeroBody
 
+var throttle : float = 0.0
+var throttle_speed : float = 0.5
+var engine_enabled : bool = false
+
 export var thrust_force : float = 600.0
+
+export var pitch_vectoring : bool = true
+export var yaw_vectoring : bool = true
+export var roll_vectoring : bool = true
+export var vector_speed : Vector3 = Vector3(1.0, 1.0, 1.0)
+export var vector_authority : Vector3 = Vector3(45.0, 45.0, 45.0)
+
+onready var thrust_position : Spatial = $ThrustPosition as Spatial
+
+onready var ui : Control = $UI
+
+export var pitch_control : bool = true
+export var yaw_control : bool = true
+export var roll_control : bool = true
+export var control_speed : Vector3 = Vector3(1.0, 1.0, 1.0)
+export var control_authority : Vector3 = Vector3(45.0, 45.0, 45.0)
 
 onready var Rudder : AeroSurface = $Rudder as AeroSurface
 onready var ElevonR : AeroSurface = $ElevonR as AeroSurface
@@ -10,18 +30,54 @@ onready var AileronR : AeroSurface = $AileronR as AeroSurface
 onready var MainL : AeroSurface = $MainL as AeroSurface
 onready var MainR : AeroSurface = $MainR as AeroSurface
 
+onready var OrbitCam : Spatial = $OrbitCam
+
+export var braking_force : float = 10.0
+var brakes : float = 0.0
+export var braking_speed : float = 0.5
+
+export var steering_authority : float = 45.0
+export var steering_speed : float = 0.1
+onready var FrontWheel : VehicleWheel = $FrontWheel
+
+var body_state : PhysicsDirectBodyState
+
+func _integrate_forces(state : PhysicsDirectBodyState) -> void:
+	._integrate_forces(state)
+	body_state = state
+
 func _physics_process(delta : float) -> void:
-	apply_central_impulse(-global_transform.basis.z * thrust_force * delta)
+	var increase_throttle : bool = Input.is_action_pressed("throttle_increase")
+	if increase_throttle or Input.is_action_pressed("throttle_decrease"):
+		throttle = clamp(move_to(delta, throttle, float(increase_throttle), throttle_speed), 0.0, 1.0)
+		ui.throttle = throttle
 	
+	apply_impulse(transform.basis.xform(thrust_position.transform.origin), -thrust_position.global_transform.basis.z * thrust_force * throttle * float(engine_enabled) * delta)
+	
+	#take input
 	var pitch : float = Input.get_axis("pitch_down", "pitch_up")
 	var yaw : float = Input.get_axis("yaw_left", "yaw_right")
 	var roll : float = Input.get_axis("roll_left", "roll_right")
 	
-	ElevonL.flap_angle = move_to(delta, ElevonL.flap_angle, pitch * deg2rad(50.0), 0.2)
-	ElevonR.flap_angle = move_to(delta, ElevonR.flap_angle, pitch * deg2rad(50.0), 0.2)
-	Rudder.flap_angle = move_to(delta, Rudder.flap_angle, yaw * deg2rad(50.0), 0.7)
-	AileronL.flap_angle = move_to(delta, AileronL.flap_angle, -roll * deg2rad(20.0), 0.7)
-	AileronR.flap_angle = move_to(delta, AileronR.flap_angle, roll * deg2rad(20.0), 0.7)
+	thrust_position.rotation.x = move_to(delta, thrust_position.rotation.x, pitch * float(pitch_vectoring) * deg2rad(vector_authority.x), vector_speed.x)
+	thrust_position.rotation.y = move_to(delta, thrust_position.rotation.y, -yaw * float(yaw_vectoring) * deg2rad(vector_authority.y), vector_speed.y)
+	
+	ElevonL.flap_angle = move_to(delta, ElevonL.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
+	ElevonR.flap_angle = move_to(delta, ElevonR.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
+	Rudder.flap_angle = move_to(delta, Rudder.flap_angle, yaw * float(yaw_control) * deg2rad(control_authority.y), control_speed.y)
+	AileronL.flap_angle = move_to(delta, AileronL.flap_angle, -roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
+	AileronR.flap_angle = move_to(delta, AileronR.flap_angle, roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
+	
+	var braking : bool = Input.is_action_pressed("brakes")
+	brakes = move_to(delta, brakes, float(braking), braking_speed)
+	FrontWheel.brake = brakes * braking_force
+	
+	steering = move_to(delta, steering, -yaw * deg2rad(steering_authority), steering_speed)
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event.is_action_pressed("toggle_engine", false):
+		engine_enabled = !engine_enabled
+		ui.engine_enabled = engine_enabled
 
 static func move_to(delta : float, position : float, target : float, speed : float = 1.0) -> float:
 	var direction : float = sign(target - position)

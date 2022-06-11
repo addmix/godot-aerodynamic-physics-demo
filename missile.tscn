@@ -24,7 +24,7 @@ emission_energy = 2.04
 emission_operator = 0
 emission_on_uv2 = false
 
-[node name="Missile" type="RigidBody"]
+[node name="Missile" type="VehicleBody"]
 mass = 8.67347
 physics_material_override = SubResource( 3 )
 continuous_cd = true

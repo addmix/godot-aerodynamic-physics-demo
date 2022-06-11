@@ -7,7 +7,7 @@ static func tpn(proportionality_constant : float, closing_velocity : float, los_
 static func apn(proportionality_constant : float, closing_velocity : float, los_rate : Vector2, normal_acceleration : float, los_delta : Vector2) -> Vector2:
 	var tpn := tpn(proportionality_constant, closing_velocity, los_rate)
 	return tpn + los_delta * normal_acceleration * (proportionality_constant / 2.0)
-
+#	Vector2(tpn.x + (proportionality_constant * normal_acceleration) / 2.0, tpn.y + (proportionality_constant * normal_acceleration) / 2.0)#
 
 
 ###

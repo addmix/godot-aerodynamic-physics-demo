@@ -18,7 +18,7 @@ extends AeroBody
 
 
 onready var ThrustPosition : Position3D = $ThrustPosition as Position3D
-onready var target : RigidBody = get_node("../Target")
+onready var target : VehicleBody = get_node("../Target")
 
 onready var desired_direction : Vector3 = -global_transform.basis.z
 onready var delta_velocity : Vector3 = desired_direction
@@ -44,10 +44,10 @@ func _physics_process(delta : float) -> void:
 #	control_auth = Vector3(Input.get_axis("yaw_left", "yaw_right"), Input.get_axis("pitch_down", "pitch_up"), Input.get_axis("roll_left", "roll_right"))
 	control_auth += get_pn_control(linear_velocity, angular_velocity)
 	
-	left.flap_angle = move_to(delta, left.flap_angle, -control_auth.y - control_auth.z * deg2rad(50.0))
-	right.flap_angle = move_to(delta, right.flap_angle, -control_auth.y + control_auth.z * deg2rad(50.0))
-	top.flap_angle = move_to(delta, top.flap_angle, -control_auth.x - control_auth.z * deg2rad(50.0))
-	bottom.flap_angle = move_to(delta, bottom.flap_angle, -control_auth.x + control_auth.z * deg2rad(50.0))
+	left.flap_angle = move_to(delta, left.flap_angle, -control_auth.y - control_auth.z * deg2rad(50.0), control_speed)
+	right.flap_angle = move_to(delta, right.flap_angle, -control_auth.y + control_auth.z * deg2rad(50.0), control_speed)
+	top.flap_angle = move_to(delta, top.flap_angle, -control_auth.x - control_auth.z * deg2rad(50.0), control_speed)
+	bottom.flap_angle = move_to(delta, bottom.flap_angle, -control_auth.x + control_auth.z * deg2rad(50.0), control_speed)
 	
 	last_relative_target_velocity = target.linear_velocity - linear_velocity
 	last_position = global_transform.origin
@@ -57,7 +57,7 @@ func get_pn_control(vel : Vector3, ang_vel : Vector3) -> Vector3:
 	var local_angular_velocity : Vector3 = global_transform.basis.xform_inv(ang_vel)
 	var local_velocity : Vector3 = global_transform.basis.xform_inv(linear_velocity)
 	
-	var tpn := tpn()
+	var tpn := apn()
 	var desired_velocity_change := Vector3(-tpn.x, -tpn.y, -local_angular_velocity.z)
 	var desired_velocity : Vector3 = local_velocity + desired_velocity_change
 	#angle to desired velocity
@@ -103,6 +103,8 @@ func apn() -> Vector2:
 	var target_acceleration : Vector3 = (last_relative_target_velocity - relative_target_velocity) / get_physics_process_delta_time()
 	#acceleration amount normal to los
 	var target_normal_acceleration : float = missile_los.normalized().dot(target_acceleration)
+	
+	
 	return Physics3DUtils.apn(3.0, closing_velocity, los_rate, target_normal_acceleration, los - last_los)
 
 
