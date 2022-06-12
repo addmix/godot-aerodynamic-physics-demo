@@ -1,0 +1,414 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://cessna/gltf/cessna.gltf" type="PackedScene" id=1]
+[ext_resource path="res://cessna/gltf/Window.material" type="Material" id=2]
+[ext_resource path="res://cessna/gltf/Panel.material" type="Material" id=3]
+[ext_resource path="res://cessna/gltf/Dash_Comp_Dail.material" type="Material" id=4]
+[ext_resource path="res://cessna/gltf/Door.tres" type="Material" id=5]
+[ext_resource path="res://cessna/gltf/blank.tres" type="Material" id=6]
+
+[node name="cessna" instance=ExtResource( 1 )]
+
+[node name="AileronR" parent="cessna172sp" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="AirleronL" parent="cessna172sp" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Antennas" parent="cessna172sp" index="2"]
+material/0 = ExtResource( 6 )
+
+[node name="BackSeat" parent="cessna172sp" index="3"]
+material/0 = ExtResource( 6 )
+
+[node name="Body" parent="cessna172sp" index="4"]
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 6 )
+material/3 = ExtResource( 6 )
+material/4 = ExtResource( 6 )
+
+[node name="cessna172spShape001" parent="cessna172sp" index="5"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape004" parent="cessna172sp" index="6"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape005" parent="cessna172sp" index="7"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape006" parent="cessna172sp" index="8"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape007" parent="cessna172sp" index="9"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape008" parent="cessna172sp" index="10"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape009" parent="cessna172sp" index="11"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape010" parent="cessna172sp" index="12"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape013" parent="cessna172sp" index="13"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape014" parent="cessna172sp" index="14"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape015" parent="cessna172sp" index="15"]
+material/0 = ExtResource( 5 )
+
+[node name="cessna172spShape016" parent="cessna172sp" index="16"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape017" parent="cessna172sp" index="17"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape019" parent="cessna172sp" index="18"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape020" parent="cessna172sp" index="19"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape022" parent="cessna172sp" index="20"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape023" parent="cessna172sp" index="21"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape049" parent="cessna172sp" index="22"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape050" parent="cessna172sp" index="23"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape059" parent="cessna172sp" index="24"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape060" parent="cessna172sp" index="25"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape062" parent="cessna172sp" index="26"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape063" parent="cessna172sp" index="27"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape064" parent="cessna172sp" index="28"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape065" parent="cessna172sp" index="29"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape066" parent="cessna172sp" index="30"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape067" parent="cessna172sp" index="31"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape068" parent="cessna172sp" index="32"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape070" parent="cessna172sp" index="33"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape071" parent="cessna172sp" index="34"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape073" parent="cessna172sp" index="35"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape074" parent="cessna172sp" index="36"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape075" parent="cessna172sp" index="37"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape076" parent="cessna172sp" index="38"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape077" parent="cessna172sp" index="39"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape078" parent="cessna172sp" index="40"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape079" parent="cessna172sp" index="41"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape080" parent="cessna172sp" index="42"]
+material/0 = ExtResource( 2 )
+
+[node name="cessna172spShape081" parent="cessna172sp" index="43"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape082" parent="cessna172sp" index="44"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape083" parent="cessna172sp" index="45"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape084" parent="cessna172sp" index="46"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape085" parent="cessna172sp" index="47"]
+material/0 = ExtResource( 5 )
+
+[node name="cessna172spShape086" parent="cessna172sp" index="48"]
+material/0 = ExtResource( 2 )
+
+[node name="cessna172spShape087" parent="cessna172sp" index="49"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape088" parent="cessna172sp" index="50"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape094" parent="cessna172sp" index="51"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape098" parent="cessna172sp" index="52"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape108" parent="cessna172sp" index="53"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape111" parent="cessna172sp" index="54"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape118" parent="cessna172sp" index="55"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape121" parent="cessna172sp" index="56"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape132" parent="cessna172sp" index="57"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape133" parent="cessna172sp" index="58"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape135" parent="cessna172sp" index="59"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape140" parent="cessna172sp" index="60"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape143" parent="cessna172sp" index="61"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape144" parent="cessna172sp" index="62"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape145" parent="cessna172sp" index="63"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape147" parent="cessna172sp" index="64"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape148" parent="cessna172sp" index="65"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape149" parent="cessna172sp" index="66"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape150" parent="cessna172sp" index="67"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape151" parent="cessna172sp" index="68"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape154" parent="cessna172sp" index="69"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape158" parent="cessna172sp" index="70"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape159" parent="cessna172sp" index="71"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape160" parent="cessna172sp" index="72"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape163" parent="cessna172sp" index="73"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape167" parent="cessna172sp" index="74"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape168" parent="cessna172sp" index="75"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape169" parent="cessna172sp" index="76"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape170" parent="cessna172sp" index="77"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape172" parent="cessna172sp" index="78"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape173" parent="cessna172sp" index="79"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape174" parent="cessna172sp" index="80"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape188" parent="cessna172sp" index="81"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape195" parent="cessna172sp" index="82"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape197" parent="cessna172sp" index="83"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape205" parent="cessna172sp" index="84"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape206" parent="cessna172sp" index="85"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape207" parent="cessna172sp" index="86"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape208" parent="cessna172sp" index="87"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape209" parent="cessna172sp" index="88"]
+material/0 = ExtResource( 6 )
+
+[node name="cessna172spShape210" parent="cessna172sp" index="89"]
+material/0 = ExtResource( 6 )
+
+[node name="CompassBody" parent="cessna172sp" index="90"]
+material/0 = ExtResource( 6 )
+
+[node name="CompassFace" parent="cessna172sp" index="91"]
+material/0 = ExtResource( 4 )
+
+[node name="Dash" parent="cessna172sp" index="92"]
+material/0 = ExtResource( 6 )
+
+[node name="DoorWindowL" parent="cessna172sp" index="93"]
+material/0 = ExtResource( 2 )
+
+[node name="DoorWindowR" parent="cessna172sp" index="94"]
+material/0 = ExtResource( 2 )
+
+[node name="ElevonL" parent="cessna172sp" index="95"]
+material/0 = ExtResource( 6 )
+
+[node name="ElevonR" parent="cessna172sp" index="96"]
+material/0 = ExtResource( 6 )
+
+[node name="ElevonConnectionsL" parent="cessna172sp" index="97"]
+material/0 = ExtResource( 6 )
+
+[node name="ElevonConnectionsR" parent="cessna172sp" index="98"]
+material/0 = ExtResource( 6 )
+
+[node name="EngineCover" parent="cessna172sp" index="99"]
+material/0 = ExtResource( 6 )
+
+[node name="Exhaust" parent="cessna172sp" index="100"]
+material/0 = ExtResource( 6 )
+
+[node name="FlapL" parent="cessna172sp" index="101"]
+material/0 = ExtResource( 6 )
+
+[node name="FlapR" parent="cessna172sp" index="102"]
+material/0 = ExtResource( 6 )
+
+[node name="IASSensor" parent="cessna172sp" index="103"]
+material/0 = ExtResource( 6 )
+
+[node name="InstrumentPanel" parent="cessna172sp" index="104"]
+material/0 = ExtResource( 3 )
+
+[node name="Propeller" parent="cessna172sp" index="105"]
+material/0 = ExtResource( 6 )
+
+[node name="PropellerCone" parent="cessna172sp" index="106"]
+material/0 = ExtResource( 6 )
+
+[node name="Rudder" parent="cessna172sp" index="107"]
+material/0 = ExtResource( 6 )
+
+[node name="RudderLight" parent="cessna172sp" index="108"]
+material/0 = ExtResource( 6 )
+
+[node name="SeatL" parent="cessna172sp" index="109"]
+material/0 = ExtResource( 6 )
+
+[node name="SeatR" parent="cessna172sp" index="110"]
+material/0 = ExtResource( 6 )
+
+[node name="Tail" parent="cessna172sp" index="111"]
+material/0 = ExtResource( 6 )
+
+[node name="TailLight" parent="cessna172sp" index="112"]
+material/0 = ExtResource( 6 )
+
+[node name="TailLightMount" parent="cessna172sp" index="113"]
+material/0 = ExtResource( 6 )
+
+[node name="VortexGeneratorL" parent="cessna172sp" index="114"]
+material/0 = ExtResource( 6 )
+
+[node name="VortexGeneratorR" parent="cessna172sp" index="115"]
+material/0 = ExtResource( 6 )
+
+[node name="VortexGenerator1L" parent="cessna172sp" index="116"]
+material/0 = ExtResource( 6 )
+
+[node name="VortexGenerator3L" parent="cessna172sp" index="117"]
+material/0 = ExtResource( 6 )
+
+[node name="Windows" parent="cessna172sp" index="118"]
+transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
+material/0 = ExtResource( 2 )
+
+[node name="WingL" parent="cessna172sp" index="119"]
+material/0 = ExtResource( 6 )
+
+[node name="WingR" parent="cessna172sp" index="120"]
+material/0 = ExtResource( 6 )
+
+[node name="WingCoverL" parent="cessna172sp" index="121"]
+material/0 = ExtResource( 6 )
+
+[node name="WingCoverR" parent="cessna172sp" index="122"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLightL" parent="cessna172sp" index="123"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLightR" parent="cessna172sp" index="124"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLight1L" parent="cessna172sp" index="125"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLight1R" parent="cessna172sp" index="126"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLight2L" parent="cessna172sp" index="127"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLight2R" parent="cessna172sp" index="128"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLightSpacerL" parent="cessna172sp" index="129"]
+material/0 = ExtResource( 6 )
+
+[node name="WingLightSpacerR" parent="cessna172sp" index="130"]
+material/0 = ExtResource( 6 )
+
+[node name="WingStrutL" parent="cessna172sp" index="131"]
+material/0 = ExtResource( 6 )
+
+[node name="WingStrutR" parent="cessna172sp" index="132"]
+material/0 = ExtResource( 6 )

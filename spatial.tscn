@@ -10,6 +10,8 @@
 background_mode = 2
 background_sky = SubResource( 6 )
 background_energy = 1.24
+ambient_light_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+ambient_light_energy = 0.01
 ambient_light_sky_contribution = 0.0
 tonemap_mode = 2
 tonemap_white = 10.49
@@ -29,12 +31,12 @@ shadow_enabled = true
 transform = Transform( 0.412687, 0, 0.910873, 0, 1, 0, -0.910873, 0, 0.412687, 336.755, 2.30155, -3.52087 )
 mass = 204.082
 thrust_force = 1700.0
-vector_authority = Vector3( 45, -45, 45 )
-control_authority = Vector3( 50, 50, 50 )
 pitch_vectoring = false
 yaw_vectoring = false
 roll_vectoring = false
+vector_authority = Vector3( 45, -45, 45 )
 control_speed = Vector3( 0.5, 1, 1 )
+control_authority = Vector3( 50, 50, 50 )
 
 [node name="Missile" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 449.99, 2617.87 )
