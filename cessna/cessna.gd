@@ -23,8 +23,8 @@ export var control_speed : Vector3 = Vector3(1.0, 1.0, 1.0)
 export var control_authority : Vector3 = Vector3(45.0, 45.0, 45.0)
 
 onready var Rudder : AeroSurface = $Rudder as AeroSurface
-onready var ElevonR : AeroSurface = $ElevonR as AeroSurface
-onready var ElevonL : AeroSurface = $ElevonL as AeroSurface
+onready var ElevatorR : AeroSurface = $ElevatorR as AeroSurface
+onready var ElevatorL : AeroSurface = $ElevatorL as AeroSurface
 onready var AileronL : AeroSurface = $AileronL as AeroSurface
 onready var AileronR : AeroSurface = $AileronR as AeroSurface
 onready var MainL : AeroSurface = $MainL as AeroSurface
@@ -65,8 +65,8 @@ func _physics_process(delta : float) -> void:
 	thrust_position.rotation.x = MathUtils.move_to(delta, thrust_position.rotation.x, pitch * float(pitch_vectoring) * deg2rad(vector_authority.x), vector_speed.x)
 	thrust_position.rotation.y = MathUtils.move_to(delta, thrust_position.rotation.y, -yaw * float(yaw_vectoring) * deg2rad(vector_authority.y), vector_speed.y)
 	
-	ElevonL.flap_angle = MathUtils.move_to(delta, ElevonL.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
-	ElevonR.flap_angle = MathUtils.move_to(delta, ElevonR.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
+	ElevatorL.flap_angle = MathUtils.move_to(delta, ElevatorL.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
+	ElevatorR.flap_angle = MathUtils.move_to(delta, ElevatorR.flap_angle, pitch * float(pitch_control) * deg2rad(control_authority.x), control_speed.x)
 	Rudder.flap_angle = MathUtils.move_to(delta, Rudder.flap_angle, yaw * float(yaw_control) * deg2rad(control_authority.y), control_speed.y)
 	AileronL.flap_angle = MathUtils.move_to(delta, AileronL.flap_angle, -roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
 	AileronR.flap_angle = MathUtils.move_to(delta, AileronR.flap_angle, roll * float(roll_control) * deg2rad(control_authority.z), control_speed.z)
