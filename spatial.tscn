@@ -31,7 +31,6 @@ shadow_enabled = true
 transform = Transform( 0.412687, 0, 0.910873, 0, 1, 0, -0.910873, 0, 0.412687, 336.755, 2.30155, -3.52087 )
 mass = 204.082
 thrust_force = 1700.0
-pitch_vectoring = false
 yaw_vectoring = false
 roll_vectoring = false
 vector_authority = Vector3( 45, -45, 45 )
@@ -43,6 +42,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 449.99, 2617.87 )
 linear_velocity = Vector3( 0, 0, -100 )
 max_force = 1000.0
 max_torque = 5000.0
+control_speed = 0.0
 
 [node name="CSGBox" type="CSGBox" parent="."]
 use_collision = true

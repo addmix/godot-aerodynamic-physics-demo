@@ -4,7 +4,7 @@ var throttle : float = 0.0
 var throttle_speed : float = 0.5
 var engine_enabled : bool = false
 
-export var thrust_force : float = 600.0
+export var thrust_force : float = 1700.0
 
 export var pitch_vectoring : bool = true
 export var yaw_vectoring : bool = true

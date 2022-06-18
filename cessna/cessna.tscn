@@ -49,6 +49,7 @@ script = ExtResource( 62 )
 
 [node name="Camera" type="Camera" parent="OrbitCam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67073, 10.551 )
+current = true
 far = 3000.0
 
 [node name="AileronL" type="Spatial" parent="."]
@@ -316,5 +317,4 @@ transform = Transform( -2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0
 
 [node name="FirstPerson" type="Camera" parent="CameraController"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244441, 0.70579, -0.49252 )
-current = true
 far = 3000.0
