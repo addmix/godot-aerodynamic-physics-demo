@@ -99,7 +99,7 @@ span = 2.117
 stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
-[node name="ElevonL" type="Spatial" parent="."]
+[node name="ElevatorL" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.11907 )
 visible = false
 script = ExtResource( 61 )
@@ -109,7 +109,7 @@ skin_friction = 0.001
 span = 1.63
 zero_lift_aoa = -5.855
 
-[node name="ElevonR" type="Spatial" parent="."]
+[node name="ElevatorR" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.11909 )
 visible = false
 script = ExtResource( 61 )
