@@ -44,7 +44,7 @@ vector_authority = Vector3( 20, 20, 45 )
 control_authority = Vector3( 60, 60, 35 )
 
 [node name="OrbitCam" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0718431, -0.369485 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0718431, 0.174371 )
 script = ExtResource( 62 )
 
 [node name="Camera" type="Camera" parent="OrbitCam"]
@@ -53,8 +53,7 @@ current = true
 far = 3000.0
 
 [node name="AileronL" type="Spatial" parent="."]
-transform = Transform( 0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.26311 )
-visible = false
+transform = Transform( 0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.0564108 )
 script = ExtResource( 61 )
 chord = 1.351
 flap_fraction = 0.2
@@ -65,8 +64,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="AileronR" type="Spatial" parent="."]
-transform = Transform( 0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.263516 )
-visible = false
+transform = Transform( 0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.0568168 )
 script = ExtResource( 61 )
 chord = 1.351
 flap_fraction = 0.2
@@ -77,8 +75,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="MainL" type="Spatial" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, -0.152272 )
-visible = false
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, 0.0544271 )
 script = ExtResource( 61 )
 chord = 1.677
 flap_angle = -0.5
@@ -89,8 +86,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="MainR" type="Spatial" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, -0.152272 )
-visible = false
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, 0.0544271 )
 script = ExtResource( 61 )
 chord = 1.677
 flap_angle = -0.5
@@ -101,8 +97,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="ElevatorL" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.11907 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.47941 )
 script = ExtResource( 61 )
 flap_fraction = 0.4
 lift_slope = 9.015
@@ -111,8 +106,7 @@ span = 1.63
 zero_lift_aoa = -5.855
 
 [node name="ElevatorR" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.11909 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.47943 )
 script = ExtResource( 61 )
 flap_fraction = 0.4
 lift_slope = 9.015
@@ -121,16 +115,14 @@ span = 1.63
 zero_lift_aoa = -5.855
 
 [node name="Rudder" type="Spatial" parent="."]
-transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.46444 )
-visible = false
+transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.82478 )
 script = ExtResource( 61 )
 flap_fraction = 0.4
 skin_friction = 0.001
 span = 1.63
 
 [node name="Tail" type="Spatial" parent="."]
-transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.243908, 2.39615 )
-visible = false
+transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.243908, 2.43327 )
 script = ExtResource( 61 )
 chord = 2.656
 lift_slope = 3.342
@@ -140,8 +132,7 @@ stall_angle_high = 10.0
 stall_angle_low = -10.0
 
 [node name="Body" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.137848, -0.372735 )
-visible = false
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.137848, -0.335611 )
 script = ExtResource( 61 )
 chord = 2.343
 lift_slope = 4.332
@@ -151,8 +142,7 @@ stall_angle_high = 10.0
 stall_angle_low = -10.0
 
 [node name="Body2" type="Spatial" parent="."]
-transform = Transform( 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, -0.380955, -0.626405 )
-visible = false
+transform = Transform( 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, -0.380955, -0.589281 )
 script = ExtResource( 61 )
 chord = 2.889
 lift_slope = 2.899
@@ -162,59 +152,59 @@ stall_angle_high = 10.0
 stall_angle_low = -10.0
 
 [node name="CabinCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.9928, 0.11979, 0, -0.11979, 0.9928, 0, 0.15874, -0.33588 )
+transform = Transform( 1, 0, 0, 0, 0.9928, 0.11979, 0, -0.11979, 0.9928, 0, 0.15874, 0.207976 )
 visible = false
 shape = SubResource( 2 )
 
 [node name="EngineCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0865359, -1.4805 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0865359, -0.936644 )
 visible = false
 shape = SubResource( 3 )
 
 [node name="TailCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.988014, 0.154366, 0, -0.154366, 0.988014, 0, 0.161982, 2.18924 )
+transform = Transform( 1, 0, 0, 0, 0.988014, 0.154366, 0, -0.154366, 0.988014, 0, 0.161982, 2.7331 )
 visible = false
 shape = SubResource( 4 )
 
 [node name="FrontWheelCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.230423, 0.973091, 0, -0.973091, 0.230423, 0, -0.757243, -1.7575 )
+transform = Transform( 1, 0, 0, 0, 0.230423, 0.973091, 0, -0.973091, 0.230423, 0, -0.757243, -1.21364 )
 visible = false
 shape = SubResource( 9 )
 
 [node name="RightWheelCollision" type="CollisionShape" parent="."]
-transform = Transform( -0.179231, 0.597186, 0.781822, 0, 0.79469, -0.607015, -0.983807, -0.108796, -0.142433, 0.714205, -0.613604, -0.0988323 )
+transform = Transform( -0.179231, 0.597186, 0.781822, 0, 0.79469, -0.607015, -0.983807, -0.108796, -0.142433, 0.714205, -0.613604, 0.445024 )
 visible = false
 shape = SubResource( 10 )
 
 [node name="RightWheelCollision2" type="CollisionShape" parent="."]
-transform = Transform( 0.179231, -0.597186, 0.781822, 0, 0.79469, 0.607015, -0.983807, -0.108796, 0.142434, -0.69903, -0.613604, -0.0988323 )
+transform = Transform( 0.179231, -0.597186, 0.781822, 0, 0.79469, 0.607015, -0.983807, -0.108796, 0.142434, -0.69903, -0.613604, 0.445024 )
 visible = false
 shape = SubResource( 10 )
 
 [node name="WingCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888339, -0.165186 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888339, 0.37867 )
 visible = false
 shape = SubResource( 5 )
 
 [node name="ElevonCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353068, 4.13371 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353068, 4.67757 )
 visible = false
 shape = SubResource( 6 )
 
 [node name="RudderCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.974, -0.226549, 0, 0.226549, 0.974, 0, 0.952596, 4.47563 )
+transform = Transform( 1, 0, 0, 0, 0.974, -0.226549, 0, 0.226549, 0.974, 0, 0.952596, 5.01949 )
 visible = false
 shape = SubResource( 7 )
 
 [node name="ThrustPosition" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.997722, 0.0674581, 0, -0.0674581, 0.997722, -4.76837e-07, 0.0880829, -2.59118 )
+transform = Transform( 1, 0, 0, 0, 0.997722, 0.0674581, 0, -0.0674581, 0.997722, -4.76837e-07, 0.0880829, -2.04732 )
 
 [node name="CSGBox" type="CSGBox" parent="ThrustPosition"]
 width = 0.2
 height = 0.2
 
 [node name="FrontWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.880936, -1.80261 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.880936, -1.25875 )
 use_as_steering = true
 wheel_radius = 0.187
 wheel_rest_length = 0.202
@@ -224,7 +214,7 @@ damping_compression = 0.7
 damping_relaxation = 0.9
 
 [node name="RightWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.18205, -0.782967, 0.342731 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.18205, -0.782967, 0.886587 )
 wheel_radius = 0.234
 wheel_rest_length = 0.235
 wheel_friction_slip = 15.0
@@ -235,7 +225,7 @@ damping_compression = 0.99
 damping_relaxation = 0.999
 
 [node name="LeftWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.182, -0.782725, 0.342694 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.182, -0.782725, 0.88655 )
 wheel_radius = 0.234
 wheel_rest_length = 0.235
 wheel_friction_slip = 15.0
@@ -311,9 +301,10 @@ margin_bottom = 86.0
 text = "G: "
 
 [node name="cessna" parent="." instance=ExtResource( 1 )]
-transform = Transform( -2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, -1.17157, 0.28393 )
+transform = Transform( -2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, -1.17157, 0.827786 )
 
 [node name="CameraController" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.543856 )
 
 [node name="FirstPerson" type="Camera" parent="CameraController"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244441, 0.70579, -0.49252 )
