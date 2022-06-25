@@ -1,8 +1,9 @@
 [submodule "addons/godot_aerodynamic_physics"]
 	path = addons/godot_aerodynamic_physics
 	url = https://github.com/addmix/godot_aerodynamic_physics
-	branch = 4.0
+	branch = main
+
 [submodule "addons/godot_utils"]
 	path = addons/godot_utils
 	url = https://github.com/addmix/godot_utils
-	branch = 4.0
+	branch = main
