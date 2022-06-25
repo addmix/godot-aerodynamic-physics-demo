@@ -53,7 +53,7 @@ current = true
 far = 3000.0
 
 [node name="AileronL" type="Spatial" parent="."]
-transform = Transform( 0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.0564108 )
+transform = Transform( 0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.0694554 )
 script = ExtResource( 61 )
 chord = 1.351
 flap_fraction = 0.2
@@ -64,7 +64,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="AileronR" type="Spatial" parent="."]
-transform = Transform( 0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.0568168 )
+transform = Transform( 0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.0698614 )
 script = ExtResource( 61 )
 chord = 1.351
 flap_fraction = 0.2
@@ -75,7 +75,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="MainL" type="Spatial" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, 0.0544271 )
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, 0.0413825 )
 script = ExtResource( 61 )
 chord = 1.677
 flap_angle = -0.5
@@ -86,7 +86,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="MainR" type="Spatial" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, 0.0544271 )
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, 0.0413825 )
 script = ExtResource( 61 )
 chord = 1.677
 flap_angle = -0.5
@@ -97,7 +97,7 @@ stall_angle_high = 23.0
 zero_lift_aoa = -3.0
 
 [node name="ElevatorL" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.47941 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.42447 )
 script = ExtResource( 61 )
 flap_fraction = 0.4
 lift_slope = 9.015
@@ -106,7 +106,7 @@ span = 1.63
 zero_lift_aoa = -5.855
 
 [node name="ElevatorR" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.47943 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.42449 )
 script = ExtResource( 61 )
 flap_fraction = 0.4
 lift_slope = 9.015
@@ -115,7 +115,7 @@ span = 1.63
 zero_lift_aoa = -5.855
 
 [node name="Rudder" type="Spatial" parent="."]
-transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.82478 )
+transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.76984 )
 script = ExtResource( 61 )
 flap_fraction = 0.4
 skin_friction = 0.001
