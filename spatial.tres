@@ -1,11 +1,10 @@
-[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dqtjb7n882omg"]
 
-[sub_resource type="OpenSimplexNoise" id=2]
-period = 3.5
+[sub_resource type="FastNoiseLite" id="2"]
 
-[sub_resource type="NoiseTexture" id=3]
-noise = SubResource( 2 )
+[sub_resource type="NoiseTexture" id="3"]
+noise = SubResource( "2" )
 
 [resource]
-albedo_color = Color( 0.160784, 0.419608, 0.168627, 1 )
-albedo_texture = SubResource( 3 )
+albedo_color = Color(0.160784, 0.419608, 0.168627, 1)
+albedo_texture = SubResource( "3" )

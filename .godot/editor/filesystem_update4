@@ -1,0 +1,10 @@
+res://cessna/cessna.tscn
+res://spatial.tres
+res://spatial.tscn
+res://cessna/OrbitCam.gd
+res://cessna/UI.gd
+res://addons/godot_utils/mathutils.gd
+res://cessna/cessna.gd
+res://missile/missile.gd
+res://missile/missile.tscn
+res://addons/godot_aerodynamic_physics/core/aero_body_3d.gd

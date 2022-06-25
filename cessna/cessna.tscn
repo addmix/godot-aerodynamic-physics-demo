@@ -1,210 +1,149 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://d336uxuwvfwfg"]
 
-[ext_resource path="res://cessna/cessna_visual.tscn" type="PackedScene" id=1]
-[ext_resource path="res://cessna/cessna.gd" type="Script" id=60]
-[ext_resource path="res://addons/godot_aerodynamic_physics/core/aero_surface.gd" type="Script" id=61]
-[ext_resource path="res://cessna/OrbitCam.gd" type="Script" id=62]
-[ext_resource path="res://icon.png" type="Texture" id=63]
-[ext_resource path="res://cessna/UI.gd" type="Script" id=64]
+[ext_resource type="PackedScene" path="res://cessna/cessna_visual.tscn" id="1"]
+[ext_resource type="Script" path="res://cessna/cessna.gd" id="60"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_physics/core/aero_surface_3d.gd" id="61"]
+[ext_resource type="Script" path="res://cessna/OrbitCam.gd" id="62"]
+[ext_resource type="Texture2D" uid="uid://drjaj0tdmqtnb" path="res://icon.png" id="63"]
+[ext_resource type="Script" path="res://cessna/UI.gd" id="64"]
 
-[sub_resource type="CapsuleShape" id=2]
-radius = 0.753103
+[sub_resource type="CapsuleShape3D" id="2"]
+radius = 0.51075
 height = 1.0215
 
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="CapsuleShape3D" id="3"]
 radius = 0.476379
 height = 1.35734
 
-[sub_resource type="CapsuleShape" id=4]
+[sub_resource type="CapsuleShape3D" id="4"]
 radius = 0.341411
 height = 4.6192
 
-[sub_resource type="CapsuleShape" id=9]
+[sub_resource type="CapsuleShape3D" id="9"]
 radius = 0.0970756
 height = 0.382885
 
-[sub_resource type="CapsuleShape" id=10]
+[sub_resource type="CapsuleShape3D" id="10"]
 radius = 0.0970756
 height = 0.842054
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 5.44655, 0.127556, 0.78797 )
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(10.8931, 0.255112, 1.57594)
 
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 1.70568, 0.0600778, 0.497743 )
+[sub_resource type="BoxShape3D" id="6"]
+size = Vector3(3.41136, 0.120156, 0.995486)
 
-[sub_resource type="BoxShape" id=7]
-extents = Vector3( 0.0796547, 0.821721, 0.497743 )
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(0.159309, 1.64344, 0.995486)
 
-[node name="cessna" type="VehicleBody"]
+[node name="cessna" type="VehicleBody3D"]
 mass = 1100.0
-script = ExtResource( 60 )
-thrust_force = 30.0
-vector_authority = Vector3( 20, 20, 45 )
-control_authority = Vector3( 60, 60, 35 )
+script = ExtResource( "60" )
+vector_authority = Vector3(20, 20, 45)
+control_authority = Vector3(60, 60, 35)
 
-[node name="OrbitCam" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0718431, 0.174371 )
-script = ExtResource( 62 )
+[node name="OrbitCam" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0718431, 0.174371)
+script = ExtResource( "62" )
 
-[node name="Camera" type="Camera" parent="OrbitCam"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67073, 10.551 )
+[node name="Camera" type="Camera3D" parent="OrbitCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67073, 10.551)
 current = true
 far = 3000.0
 
-[node name="AileronL" type="Spatial" parent="."]
-transform = Transform( 0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.0564108 )
-script = ExtResource( 61 )
-chord = 1.351
-flap_fraction = 0.2
-lift_slope = 2.0
-skin_friction = 0.0001
-span = 2.75
-stall_angle_high = 23.0
-zero_lift_aoa = -3.0
+[node name="AileronL" type="Node3D" parent="."]
+transform = Transform3D(0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.0564108)
+script = ExtResource( "61" )
 
-[node name="AileronR" type="Spatial" parent="."]
-transform = Transform( 0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.0568168 )
-script = ExtResource( 61 )
-chord = 1.351
-flap_fraction = 0.2
-lift_slope = 2.0
-skin_friction = 0.0001
-span = 2.75
-stall_angle_high = 23.0
-zero_lift_aoa = -3.0
+[node name="AileronR" type="Node3D" parent="."]
+transform = Transform3D(0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.0568168)
+script = ExtResource( "61" )
 
-[node name="MainL" type="Spatial" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, 0.0544271 )
-script = ExtResource( 61 )
-chord = 1.677
-flap_angle = -0.5
-lift_slope = 2.0
-skin_friction = 0.0001
-span = 2.117
-stall_angle_high = 23.0
-zero_lift_aoa = -3.0
+[node name="MainL" type="Node3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, 0.0544271)
+script = ExtResource( "61" )
 
-[node name="MainR" type="Spatial" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, 0.0544271 )
-script = ExtResource( 61 )
-chord = 1.677
-flap_angle = -0.5
-lift_slope = 2.0
-skin_friction = 0.0001
-span = 2.117
-stall_angle_high = 23.0
-zero_lift_aoa = -3.0
+[node name="MainR" type="Node3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, 0.0544271)
+script = ExtResource( "61" )
 
-[node name="ElevatorL" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.47941 )
-script = ExtResource( 61 )
-flap_fraction = 0.4
-lift_slope = 9.015
-skin_friction = 0.001
-span = 1.63
-zero_lift_aoa = -5.855
+[node name="ElevatorL" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.47941)
+script = ExtResource( "61" )
 
-[node name="ElevatorR" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.47943 )
-script = ExtResource( 61 )
-flap_fraction = 0.4
-lift_slope = 9.015
-skin_friction = 0.001
-span = 1.63
-zero_lift_aoa = -5.855
+[node name="ElevatorR" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.47943)
+script = ExtResource( "61" )
 
-[node name="Rudder" type="Spatial" parent="."]
-transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.82478 )
-script = ExtResource( 61 )
-flap_fraction = 0.4
-skin_friction = 0.001
-span = 1.63
+[node name="Rudder" type="Node3D" parent="."]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.82478)
+script = ExtResource( "61" )
 
-[node name="Tail" type="Spatial" parent="."]
-transform = Transform( 1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.243908, 2.43327 )
-script = ExtResource( 61 )
-chord = 2.656
-lift_slope = 3.342
-skin_friction = 0.001
-span = 0.395
-stall_angle_high = 10.0
-stall_angle_low = -10.0
+[node name="Tail" type="Node3D" parent="."]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.243908, 2.43327)
+script = ExtResource( "61" )
 
-[node name="Body" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.137848, -0.335611 )
-script = ExtResource( 61 )
-chord = 2.343
-lift_slope = 4.332
-skin_friction = 0.001
-span = 0.919
-stall_angle_high = 10.0
-stall_angle_low = -10.0
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.137848, -0.335611)
+script = ExtResource( "61" )
 
-[node name="Body2" type="Spatial" parent="."]
-transform = Transform( 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, -0.380955, -0.589281 )
-script = ExtResource( 61 )
-chord = 2.889
-lift_slope = 2.899
-skin_friction = 0.001
-span = 0.613
-stall_angle_high = 10.0
-stall_angle_low = -10.0
+[node name="Body2" type="Node3D" parent="."]
+transform = Transform3D(1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, -0.380955, -0.589281)
+script = ExtResource( "61" )
 
-[node name="CabinCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.9928, 0.11979, 0, -0.11979, 0.9928, 0, 0.15874, 0.207976 )
+[node name="CabinCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9928, 0.11979, 0, -0.11979, 0.9928, 0, 0.15874, 0.207976)
 visible = false
-shape = SubResource( 2 )
+shape = SubResource( "2" )
 
-[node name="EngineCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0865359, -0.936644 )
+[node name="EngineCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0865359, -0.936644)
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( "3" )
 
-[node name="TailCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.988014, 0.154366, 0, -0.154366, 0.988014, 0, 0.161982, 2.7331 )
+[node name="TailCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.988014, 0.154366, 0, -0.154366, 0.988014, 0, 0.161982, 2.7331)
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( "4" )
 
-[node name="FrontWheelCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.230423, 0.973091, 0, -0.973091, 0.230423, 0, -0.757243, -1.21364 )
+[node name="FrontWheelCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.230423, 0.973091, 0, -0.973091, 0.230423, 0, -0.757243, -1.21364)
 visible = false
-shape = SubResource( 9 )
+shape = SubResource( "9" )
 
-[node name="RightWheelCollision" type="CollisionShape" parent="."]
-transform = Transform( -0.179231, 0.597186, 0.781822, 0, 0.79469, -0.607015, -0.983807, -0.108796, -0.142433, 0.714205, -0.613604, 0.445024 )
+[node name="RightWheelCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.179231, 0.597186, 0.781822, 0, 0.79469, -0.607015, -0.983807, -0.108796, -0.142433, 0.714205, -0.613604, 0.445024)
 visible = false
-shape = SubResource( 10 )
+shape = SubResource( "10" )
 
-[node name="RightWheelCollision2" type="CollisionShape" parent="."]
-transform = Transform( 0.179231, -0.597186, 0.781822, 0, 0.79469, 0.607015, -0.983807, -0.108796, 0.142434, -0.69903, -0.613604, 0.445024 )
+[node name="RightWheelCollision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.179231, -0.597186, 0.781822, 0, 0.79469, 0.607015, -0.983807, -0.108796, 0.142434, -0.69903, -0.613604, 0.445024)
 visible = false
-shape = SubResource( 10 )
+shape = SubResource( "10" )
 
-[node name="WingCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888339, 0.37867 )
+[node name="WingCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.888339, 0.37867)
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( "5" )
 
-[node name="ElevonCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353068, 4.67757 )
+[node name="ElevonCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353068, 4.67757)
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( "6" )
 
-[node name="RudderCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.974, -0.226549, 0, 0.226549, 0.974, 0, 0.952596, 5.01949 )
+[node name="RudderCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.974, -0.226549, 0, 0.226549, 0.974, 0, 0.952596, 5.01949)
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( "7" )
 
 [node name="ThrustPosition" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.997722, 0.0674581, 0, -0.0674581, 0.997722, -4.76837e-07, 0.0880829, -2.04732 )
+transform = Transform3D(1, 0, 0, 0, 0.997722, 0.0674581, 0, -0.0674581, 0.997722, -4.76837e-07, 0.0880829, -2.04732)
 
-[node name="CSGBox" type="CSGBox" parent="ThrustPosition"]
-width = 0.2
-height = 0.2
+[node name="CSGBox" type="CSGBox3D" parent="ThrustPosition"]
+size = Vector3(0.2, 0.2, 2)
 
-[node name="FrontWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.880936, -1.25875 )
+[node name="FrontWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.880936, -1.25875)
 use_as_steering = true
 wheel_radius = 0.187
 wheel_rest_length = 0.202
@@ -213,8 +152,8 @@ suspension_stiffness = 80.0
 damping_compression = 0.7
 damping_relaxation = 0.9
 
-[node name="RightWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.18205, -0.782967, 0.886587 )
+[node name="RightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.18205, -0.782967, 0.886587)
 wheel_radius = 0.234
 wheel_rest_length = 0.235
 wheel_friction_slip = 15.0
@@ -224,8 +163,8 @@ suspension_max_force = 1500.0
 damping_compression = 0.99
 damping_relaxation = 0.999
 
-[node name="LeftWheel" type="VehicleWheel" parent="."]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.182, -0.782725, 0.88655 )
+[node name="LeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.182, -0.782725, 0.88655)
 wheel_radius = 0.234
 wheel_rest_length = 0.235
 wheel_friction_slip = 15.0
@@ -238,74 +177,60 @@ damping_relaxation = 0.999
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 64 )
-__meta__ = {
-"_edit_lock_": true
-}
+script = ExtResource( "64" )
 
 [node name="Panel" type="Panel" parent="UI"]
-margin_left = 19.0
-margin_top = 277.0
-margin_right = 116.0
-margin_bottom = 369.0
 
-[node name="Throttle" type="TextureProgress" parent="UI"]
-visible = false
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 16.0
-margin_top = 520.0
-margin_right = 80.0
-margin_bottom = 584.0
-rect_min_size = Vector2( 16, 16 )
-rect_pivot_offset = Vector2( 0, 64 )
+[node name="Throttle" type="TextureProgressBar" parent="UI"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 14.0
+offset_top = 258.0
+offset_right = 78.0
+offset_bottom = 322.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 max_value = 1.0
 step = 0.001
-texture_progress = ExtResource( 63 )
 fill_mode = 3
+texture_progress = ExtResource( "63" )
 
 [node name="V" type="VBoxContainer" parent="UI"]
-margin_left = 24.0
-margin_top = 280.0
-margin_right = 64.0
-margin_bottom = 366.0
 
 [node name="IAS" type="Label" parent="UI/V"]
-margin_right = 40.0
-margin_bottom = 14.0
+offset_right = 29.0
+offset_bottom = 26.0
 text = "IAS "
 
 [node name="Altimeter" type="Label" parent="UI/V"]
-margin_top = 18.0
-margin_right = 40.0
-margin_bottom = 32.0
+offset_top = 30.0
+offset_right = 29.0
+offset_bottom = 56.0
 text = "IAS "
 
 [node name="Mach" type="Label" parent="UI/V"]
-margin_top = 36.0
-margin_right = 40.0
-margin_bottom = 50.0
+offset_top = 60.0
+offset_right = 29.0
+offset_bottom = 86.0
 text = "M: "
 
 [node name="Alpha" type="Label" parent="UI/V"]
-margin_top = 54.0
-margin_right = 40.0
-margin_bottom = 68.0
+offset_top = 90.0
+offset_right = 29.0
+offset_bottom = 116.0
 text = "a: "
 
 [node name="G" type="Label" parent="UI/V"]
-margin_top = 72.0
-margin_right = 40.0
-margin_bottom = 86.0
+offset_top = 120.0
+offset_right = 29.0
+offset_bottom = 146.0
 text = "G: "
 
-[node name="cessna" parent="." instance=ExtResource( 1 )]
-transform = Transform( -2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, -1.17157, 0.827786 )
+[node name="cessna" parent="." instance=ExtResource( "1" )]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, -1.17157, 0.827786)
 
-[node name="CameraController" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.543856 )
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.543856)
 
-[node name="FirstPerson" type="Camera" parent="CameraController"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244441, 0.70579, -0.49252 )
+[node name="FirstPerson" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244441, 0.70579, -0.49252)
 far = 3000.0

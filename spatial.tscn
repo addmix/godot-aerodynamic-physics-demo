@@ -1,51 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://oprou4af04fp"]
 
-[ext_resource path="res://missile/missile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://cessna/cessna.tscn" type="PackedScene" id=2]
-[ext_resource path="res://spatial.tres" type="Material" id=3]
+[ext_resource type="PackedScene" uid="uid://d336uxuwvfwfg" path="res://cessna/cessna.tscn" id="2"]
+[ext_resource type="Material" uid="uid://dqtjb7n882omg" path="res://spatial.tres" id="3"]
 
-[sub_resource type="ProceduralSky" id=6]
+[node name="Spatial" type="Node3D"]
 
-[sub_resource type="Environment" id=7]
-background_mode = 2
-background_sky = SubResource( 6 )
-background_energy = 1.24
-ambient_light_color = Color( 0.588235, 0.588235, 0.588235, 1 )
-ambient_light_energy = 0.01
-ambient_light_sky_contribution = 0.0
-tonemap_mode = 2
-tonemap_white = 10.49
-glow_enabled = true
-glow_bloom = 0.08
-
-[node name="Spatial" type="Spatial"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( 1, 0, 0, 0, 0.360078, 0.932922, 0, -0.932922, 0.360078, 0, 0, 0 )
-shadow_enabled = true
-
-[node name="Target" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.412687, 0, 0.910873, 0, 1, 0, -0.910873, 0, 0.412687, 336.755, 2.30155, -3.52087 )
+[node name="Target" parent="." instance=ExtResource( "2" )]
+transform = Transform3D(0.412687, 0, 0.910873, 0, 1, 0, -0.910873, 0, 0.412687, 336.755, 2.30155, -3.52087)
 mass = 204.082
-thrust_force = 1700.0
 yaw_vectoring = false
 roll_vectoring = false
-vector_authority = Vector3( 45, -45, 45 )
-control_speed = Vector3( 0.5, 1, 1 )
-control_authority = Vector3( 50, 50, 50 )
+vector_authority = Vector3(45, -45, 45)
+control_speed = Vector3(0.5, 1, 1)
+control_authority = Vector3(50, 50, 50)
 
-[node name="Missile" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 449.99, 2617.87 )
-linear_velocity = Vector3( 0, 0, -100 )
-max_force = 1000.0
-max_torque = 5000.0
-control_speed = 0.0
-
-[node name="CSGBox" type="CSGBox" parent="."]
+[node name="CSGBox" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 334.498, 0, 0)
 use_collision = true
-width = 1000.0
-depth = 1000.0
-material = ExtResource( 3 )
+size = Vector3(1000, 1, 1000)
+material = ExtResource( "3" )
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.360078, 0.932922, 0, -0.932922, 0.360078, 0, 0, 0)
+shadow_enabled = true

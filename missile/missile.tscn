@@ -1,126 +1,85 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://cgg0ul81w2uec"]
 
-[ext_resource path="res://missile/missile.gd" type="Script" id=1]
-[ext_resource path="res://addons/godot_aerodynamic_physics/core/aero_surface.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://missile/missile.gd" id="1"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_physics/core/aero_surface_3d.gd" id="2"]
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id="3"]
 friction = 0.0
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.39359
 height = 3.02
 
-[sub_resource type="CapsuleMesh" id=2]
+[sub_resource type="CapsuleMesh" id="2"]
 radius = 0.13
-mid_height = 3.02
 radial_segments = 8
 rings = 2
 
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 1, 0, 0, 1 )
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
-emission = Color( 1, 0, 0, 1 )
+emission = Color(1, 0, 0, 1)
 emission_energy = 2.04
-emission_operator = 0
-emission_on_uv2 = false
 
-[node name="Missile" type="VehicleBody"]
+[node name="Missile" type="VehicleBody3D"]
 mass = 8.67347
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( "3" )
 continuous_cd = true
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 max_force = 100.0
 max_torque = 1000.0
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0303155 )
-shape = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0303155)
+shape = SubResource( "1" )
 
-[node name="CSGMesh" type="CSGMesh" parent="CollisionShape"]
-mesh = SubResource( 2 )
-material = SubResource( 4 )
+[node name="CSGMesh" type="CSGMesh3D" parent="CollisionShape"]
+mesh = SubResource( "2" )
+material = SubResource( "4" )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.374, 4.007 )
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.374, 4.007)
 far = 5000.0
 
 [node name="ThrustPosition" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.58674 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.58674)
 
-[node name="BodyH" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0285933 )
-script = ExtResource( 2 )
-chord = 3.136
-lift_slope = 2.22
-span = 0.233
+[node name="BodyH" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0285933)
+script = ExtResource( "2" )
 
-[node name="BodyV" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.0285933 )
-script = ExtResource( 2 )
-chord = 3.136
-lift_slope = 2.22
-span = 0.233
+[node name="BodyV" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.0285933)
+script = ExtResource( "2" )
 
-[node name="LeftRear" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 1.3 )
-script = ExtResource( 2 )
-chord = 0.5
-lift_slope = 2.22
-span = 0.3
+[node name="LeftRear" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 1.3)
+script = ExtResource( "2" )
 
-[node name="RightRear" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 1.3 )
-script = ExtResource( 2 )
-chord = 0.5
-lift_slope = 2.22
-span = 0.3
+[node name="RightRear" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 1.3)
+script = ExtResource( "2" )
 
-[node name="DorseRear" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.09278e-08, 0.25, 1.3 )
-script = ExtResource( 2 )
-chord = 0.5
-lift_slope = 2.22
-span = 0.3
+[node name="DorseRear" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.09278e-08, 0.25, 1.3)
+script = ExtResource( "2" )
 
-[node name="VentralRear" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.09278e-08, -0.25, 1.3 )
-script = ExtResource( 2 )
-chord = 0.5
-lift_slope = 2.22
-span = 0.3
+[node name="VentralRear" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.09278e-08, -0.25, 1.3)
+script = ExtResource( "2" )
 
-[node name="LeftFront" type="Spatial" parent="." groups=["pitch", "roll"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.96615 )
-script = ExtResource( 2 )
-aspect_ratio = 1.0
-chord = 0.4
-flap_fraction = 0.4
-lift_slope = 2.22
-span = 0.3
+[node name="LeftFront" type="Node3D" parent="." groups=["pitch", "roll"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.96615)
+script = ExtResource( "2" )
 
-[node name="RightFront" type="Spatial" parent="." groups=["pitch", "roll"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.96615 )
-script = ExtResource( 2 )
-aspect_ratio = 1.0
-chord = 0.4
-flap_fraction = 0.4
-lift_slope = 2.22
-span = 0.3
+[node name="RightFront" type="Node3D" parent="." groups=["pitch", "roll"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.96615)
+script = ExtResource( "2" )
 
-[node name="DorsalFront" type="Spatial" parent="." groups=["roll", "yaw"]]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.2, -0.96615 )
-script = ExtResource( 2 )
-aspect_ratio = 1.0
-chord = 0.4
-flap_fraction = 0.4
-lift_slope = 2.22
-span = 0.3
+[node name="DorsalFront" type="Node3D" parent="." groups=["roll", "yaw"]]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.2, -0.96615)
+script = ExtResource( "2" )
 
-[node name="VentralFront" type="Spatial" parent="." groups=["roll", "yaw"]]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, -0.96615 )
-script = ExtResource( 2 )
-aspect_ratio = 1.0
-chord = 0.4
-flap_fraction = 0.4
-lift_slope = 2.22
-span = 0.3
+[node name="VentralFront" type="Node3D" parent="." groups=["roll", "yaw"]]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, -0.96615)
+script = ExtResource( "2" )

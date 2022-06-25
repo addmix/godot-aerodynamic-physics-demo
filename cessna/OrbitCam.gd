@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 var camera_rotation : Vector3 = Vector3(0.0, 0.0, 0.0)
 
@@ -11,7 +11,7 @@ func _unhandled_input(event : InputEvent) -> void:
 		camera_rotation.y -= deg2rad(event.relative.x * 0.3)
 
 func _process(delta : float) -> void:
-	var velocity : Vector3 = get_parent().global_transform.basis.xform_inv(get_parent().linear_velocity)
+	var velocity : Vector3 = get_parent().global_transform.basis.inverse() * get_parent().linear_velocity
 	
 	if get_parent().body_state:
 		var length = velocity.length()
@@ -28,6 +28,6 @@ func _process(delta : float) -> void:
 		up = (forward.cross(right))
 		
 		var basis = Basis(right, up, forward).orthonormalized()
-		basis = Basis(basis.get_rotation_quat()).orthonormalized()
+		basis = Basis(basis.get_rotation_quaternion()).orthonormalized()
 		if transform.basis != basis:
-			transform.basis = transform.basis.get_rotation_quat().slerp(basis.get_rotation_quat(), 0.01 * length)# + camera_rotation)
+			transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(basis.get_rotation_quaternion(), 0.01 * length))# + camera_rotation)
