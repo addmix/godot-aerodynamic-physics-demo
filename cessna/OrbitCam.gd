@@ -27,7 +27,11 @@ func _process(delta : float) -> void:
 		var right = (forward.cross(up)).normalized()
 		up = (forward.cross(right))
 		
-		var basis = Basis(right, up, forward).orthonormalized()
+		var basis = Basis(
+			Vector3(right.x, up.x, forward.x),
+			Vector3(right.y, up.y, forward.y),
+			Vector3(right.z, up.z, forward.z)
+		).orthonormalized()
 		basis = Basis(basis.get_rotation_quaternion()).orthonormalized()
 		if transform.basis != basis:
 			transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(basis.get_rotation_quaternion(), 0.01 * length))# + camera_rotation)

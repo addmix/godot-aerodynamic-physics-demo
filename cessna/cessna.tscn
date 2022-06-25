@@ -52,44 +52,82 @@ current = true
 far = 3000.0
 
 [node name="AileronL" type="Node3D" parent="."]
-transform = Transform3D(0.999403, 0.0345332, 2.90887e-11, -0.0345332, 0.999403, 0, -2.90713e-11, -1.00452e-12, 1, -4, 0.921848, -0.0564108)
+transform = Transform3D(0.99939, 0.0348995, 0, -0.0348995, 0.99939, 0, 0, 0, 1, -4, 0.921848, -0.0564108)
 script = ExtResource( "61" )
+chord = 1.452
+flap_fraction = 0.391
+span = 2.658
+stall_angle_high = 8.552
+stall_angle_low = -5.411
 
 [node name="AileronR" type="Node3D" parent="."]
 transform = Transform3D(0.999403, -0.0345332, -2.90887e-11, 0.0345332, 0.999403, 0, 2.90713e-11, -1.00452e-12, 1, 4, 0.921529, -0.0568168)
 script = ExtResource( "61" )
+chord = 1.452
+flap_fraction = 0.391
+span = 2.658
+stall_angle_high = 8.552
+stall_angle_low = -5.411
 
 [node name="MainL" type="Node3D" parent="."]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -1.547, 0.85935, 0.0544271)
 script = ExtResource( "61" )
+chord = 1.666
+span = 2.198
+stall_angle_high = 8.552
+stall_angle_low = -5.411
 
 [node name="MainR" type="Node3D" parent="."]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 1.547, 0.85935, 0.0544271)
 script = ExtResource( "61" )
+chord = 1.666
+span = 2.198
+stall_angle_high = 8.552
+stall_angle_low = -5.411
 
 [node name="ElevatorL" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.47941)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89053, 0.349229, 4.38475)
 script = ExtResource( "61" )
+chord = 1.116
+flap_fraction = 0.4
+lift_slope = 8.104
+span = 1.575
+stall_angle_high = 25.0
+stall_angle_low = -25.0
 
 [node name="ElevatorR" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.47943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891, 0.349621, 4.38477)
 script = ExtResource( "61" )
+chord = 1.116
+flap_fraction = 0.4
+lift_slope = 8.104
+span = 1.575
+stall_angle_high = 25.0
+stall_angle_low = -25.0
 
 [node name="Rudder" type="Node3D" parent="."]
-transform = Transform3D(1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 0.96156, 4.82478)
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, -0.965926, 1.13133e-08, -0.258819, -0.258819, -4.2222e-08, 0.965926, 0, 1.06837, 4.75447)
 script = ExtResource( "61" )
+chord = 1.122
+flap_fraction = 0.391
+span = 1.665
 
 [node name="Tail" type="Node3D" parent="."]
-transform = Transform3D(1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.243908, 2.43327)
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, -0.989724, -6.25037e-09, 0.142992, 0.142992, -4.32622e-08, 0.989724, 0, 0.179863, 2.23065)
 script = ExtResource( "61" )
+chord = 2.743
+span = 0.485
 
 [node name="Body" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.137848, -0.335611)
 script = ExtResource( "61" )
+chord = 2.477
 
 [node name="Body2" type="Node3D" parent="."]
 transform = Transform3D(1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0, 0, 1, 0, -0.380955, -0.589281)
 script = ExtResource( "61" )
+chord = 2.419
+span = 0.616
 
 [node name="CabinCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9928, 0.11979, 0, -0.11979, 0.9928, 0, 0.15874, 0.207976)
