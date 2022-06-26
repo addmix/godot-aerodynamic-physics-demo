@@ -1,3 +1,5 @@
-res://spatial.tscn
-res://spatial.tres
 res://cessna/cessna.tscn
+res://spatial.tres
+res://spatial.tscn
+res://cessna/cessna.gd
+res://missile/missile.gd

@@ -46,6 +46,7 @@ var last_velocity : Vector3 = Vector3.ZERO
 
 func _integrate_forces(state : PhysicsDirectBodyState3D) -> void:
 	body_state = state
+	apply_force(-thrust_position.global_transform.basis.z * thrust_force * throttle * float(engine_enabled), transform.basis * thrust_position.transform.origin)
 	super._integrate_forces(state)
 	ui.set_physics_process(true)
 
@@ -54,8 +55,6 @@ func _physics_process(delta : float) -> void:
 	if increase_throttle or Input.is_action_pressed("throttle_decrease"):
 		throttle = clamp(MathUtils.move_to(delta, throttle, float(increase_throttle), throttle_speed), 0.0, 1.0)
 		ui.throttle = throttle
-	
-	apply_impulse(transform.basis * thrust_position.transform.origin, thrust_position.global_transform.basis.z * thrust_force * throttle * float(engine_enabled) * delta)
 	
 	#take input
 	var pitch : float = Input.get_axis("pitch_down", "pitch_up")

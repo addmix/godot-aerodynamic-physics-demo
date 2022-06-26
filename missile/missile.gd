@@ -32,7 +32,7 @@ func _physics_process(delta : float) -> void:
 	los = get_los()
 	last_los = get_last_los()
 	#thrust
-	apply_impulse(-(global_transform.basis * ThrustPosition.transform.origin), -global_transform.basis.z * 800 * delta)
+	apply_force(-global_transform.basis.z * 800, global_transform.basis * -ThrustPosition.transform.origin)
 	
 	#control
 #	control_auth = Vector3(Input.get_axis("yaw_left", "yaw_right"), Input.get_axis("pitch_down", "pitch_up"), Input.get_axis("roll_left", "roll_right"))
